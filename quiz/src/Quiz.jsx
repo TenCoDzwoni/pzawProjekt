@@ -24,15 +24,21 @@ function Quiz() {
         odpowiedz: 'd'
     }]
 
-    const [pytanie, setPytanie] = useState(pio[0])
-
-    let punkty = 0
+    const [odpowiedz, setOdpowiedz] = useState('')
+    const [licznik, setLicznik] = useState(0)
+    const [punkty, setPunkty] = useState(0)
+    const [pytanie, setPytanie] = useState(pio[licznik])
 
     function nastepnePytanie(){
-        if (punkty/* input*/  == odpowiedz) {
-            punkty+=1
+        
+        if (pytanie.odpowiedz === odpowiedz.target.value) {
+            setPunkty(punkty+1)
         }
-        setPytanie(pio)
+        if(licznik<4){
+            setLicznik(licznik+1)
+        }
+        setPytanie(pio[licznik])
+        console.log(punkty)
     }
     
 
@@ -40,8 +46,9 @@ function Quiz() {
     <div className="Quiz">
       <button>Rozpocznij grę</button>
       <button>Zakończ grę</button>
-      <Pytanie $pytanie={pytanie.pytanie}/>
-      <button onClick={nastepnePytanie()}>Sprawdź odpowiedź </button>
+      <Pytanie pytanie={pytanie.pytanie}/>
+      <input onChange={setOdpowiedz}/>
+      <button onClick={nastepnePytanie}>Sprawdź odpowiedź </button>
     </div>
   );
 }
