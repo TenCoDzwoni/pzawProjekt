@@ -1,0 +1,15 @@
+body{
+    background-color: #FDB833;
+}
+
+.Button{
+    background-color: #FFD07B;
+    border: solid 2px #B1740F;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
+
+#wynik{
+    display: none;
+}
